@@ -1,0 +1,14 @@
+import test from'node:test';import assert from'node:assert/strict';import{scenarios}from'../scenarios.mjs';import{initialState,reduce,stateAt}from'../core.mjs';
+test('nothing is written before approval',()=>assert.equal(stateAt(scenarios[0],0).writes,0));
+test('approval creates one commitment',()=>assert.equal(stateAt(scenarios[0],1).writes,1));
+test('changed deadline waits for approval',()=>{const s=stateAt(scenarios[0],2);assert.equal(s.task.due,'Friday, before 6 pm');assert.equal(s.pending.due,'Friday, before 4 pm')});
+test('approved repair replaces stale deadline',()=>assert.equal(stateAt(scenarios[0],3).task.due,'Friday, before 4 pm'));
+test('preparation update survives',()=>assert.match(stateAt(scenarios[0],5).task.dependency,/Receipt by the door/));
+test('completion waits for approval',()=>assert.equal(stateAt(scenarios[0],6).task.status,'open'));
+test('approved completion clears reminder',()=>assert.equal(stateAt(scenarios[0],7).task.alarm,null));
+test('speaker correction clears wrong alarm after approval',()=>{const s=stateAt(scenarios[1],3);assert.equal(s.task.owner,'Sam');assert.equal(s.task.alarm,null)});
+test('tentative handoff does not silently reassign',()=>assert.equal(stateAt(scenarios[2],2).task.owner,'You'));
+test('confirmed handoff changes owner after approval',()=>assert.equal(stateAt(scenarios[2],4).task.owner,'Sam'));
+test('cancellation clears the alarm',()=>assert.equal(stateAt(scenarios[3],3).task.alarm,null));
+test('duplicate event is idempotent',()=>{let s=stateAt(scenarios[0],1);s=reduce(s,scenarios[0].events[0]);assert.equal(s.writes,1);assert.match(s.message,/Duplicate/)});
+test('noise creates no task',()=>assert.equal(reduce(initialState(),{id:'n',kind:'noise'}).task,null));

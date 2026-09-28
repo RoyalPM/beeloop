@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08131d">
+  <title>BeeLoop — Plans that repair themselves</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="BeeLoop home">
+      <span class="brand-mark" aria-hidden="true">∞</span>
+      <span>Bee<span>Loop</span></span>
+    </a>
+    <div class="source-pill" id="source-pill"><span class="dot"></span><span id="source-label">Synthetic Bee-compatible events</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">WEARABLE AI · PERSONAL PRODUCTIVITY</p>
+        <h1>Plans change.<br><span>Your reminders should too.</span></h1>
+        <p class="lede">BeeLoop turns Bee conversations into living commitments—and repairs every affected reminder when the conversation changes.</p>
+        <div class="hero-actions">
+          <button class="primary" id="run-demo">Run the 45-second demo <span>→</span></button>
+          <button class="secondary" id="connect-live">Connect to local Bee CLI</button>
+        </div>
+      </div>
+      <div class="metric-stack" aria-label="Prototype validation metrics">
+        <div><strong>4</strong><span>edge-case scenarios</span></div>
+        <div><strong>21</strong><span>conversation events</span></div>
+        <div><strong>13</strong><span>automated checks</span></div>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="BeeLoop interactive demo">
+      <aside class="timeline-panel">
+        <div class="section-heading"><span>Conversation timeline</span><span class="tiny-badge" id="mode-badge">SIMULATION</span></div>
+        <label class="sr-only" for="scenario">Choose scenario</label>
+        <select id="scenario"></select>
+        <ol id="timeline" class="timeline"></ol>
+      </aside>
+
+      <section class="commitment-panel">
+        <div class="section-heading">
+          <span>Living commitment</span>
+          <span class="confidence" id="confidence">Confidence 96%</span>
+        </div>
+        <div class="commitment-card">
+          <div class="card-title-row">
+            <div class="task-icon">✓</div>
+            <div><p class="kicker">ACTIVE COMMITMENT</p><h2 id="task-title">Collect the repaired laptop</h2></div>
+            <span class="status open" id="task-status">Open</span>
+          </div>
+          <dl class="facts">
+            <div><dt>Owner</dt><dd id="task-owner">You</dd></div>
+            <div><dt>When</dt><dd id="task-due">Friday, before 6 pm</dd></div>
+            <div><dt>Prepare</dt><dd id="task-dependency">Bring the collection receipt</dd></div>
+            <div><dt>Reminder</dt><dd id="task-alarm">Friday, 4 pm</dd></div>
+          </dl>
+          <div class="change-card hidden" id="change-card">
+            <p class="kicker">BEELOOP FOUND A CHANGE</p>
+            <div id="change-copy"></div>
+            <div class="decision-row"><button class="primary compact" id="approve">Approve repair</button><button class="ghost compact" id="dismiss">Keep current plan</button></div>
+          </div>
+          <div class="trust-row"><span>↺ Version history preserved</span><span>◉ Source-linked</span><span>↶ Reversible</span></div>
+        </div>
+        <div class="impact-banner" id="impact-banner"><span class="impact-icon">✦</span><div><strong id="impact-title">No stale reminders</strong><p id="impact-copy">BeeLoop keeps one verified plan instead of creating disconnected notes.</p></div></div>
+      </section>
+    </section>
+
+    <section class="controls">
+      <button class="secondary" id="prev">← Previous event</button>
+      <div class="event-counter" id="event-counter">Event 1 of 8</div>
+      <button class="primary" id="next">Next event →</button>
+    </section>
+
+    <section class="privacy">
+      <div><span class="privacy-icon">◌</span><div><strong>Minimum necessary memory</strong><p>Structured commitments, confidence and provenance—not a second raw-audio archive.</p></div></div>
+      <div><span class="privacy-icon">◎</span><div><strong>Human control at consequential moments</strong><p>Ambiguous or high-impact changes wait for approval.</p></div></div>
+      <div><span class="privacy-icon">↺</span><div><strong>Every repair is reversible</strong><p>Version history shows what changed, why, and which Bee source triggered it.</p></div></div>
+    </section>
+  </main>
+
+  <footer><span>BeeLoop prototype</span><span id="footer-mode">Uses synthetic events until a local authenticated Bee CLI is connected.</span></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

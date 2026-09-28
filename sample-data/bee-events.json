@@ -1,0 +1,8 @@
+{
+  "note": "Synthetic fixture matching the documented Bee CLI stream envelope. It contains no real user data.",
+  "events": [
+    {"event":"new-utterance","data":{"utterance":{"text":"I'll collect the laptop tomorrow. The shop closes at six.","speaker":"speaker_1"},"conversation_uuid":"demo-conversation-a"}},
+    {"event":"new-utterance","data":{"utterance":{"text":"Quick correction: we're closing at four tomorrow, not six.","speaker":"speaker_2"},"conversation_uuid":"demo-conversation-b"}},
+    {"event":"todo-updated","data":{"todo":{"id":101,"text":"Collect the repaired laptop before 4 pm","completed":false,"alarmAt":1792756800000}}}
+  ]
+}

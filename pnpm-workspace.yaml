@@ -1,0 +1,2 @@
+allowBuilds:
+  '@beeai/cli': set this to true or false
